@@ -1,7 +1,6 @@
-package Ordenacao.OrdenacaoPessoas;
+package list.OrdenacaoPessoas;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,17 +21,20 @@ public class OrdenacaoPessoas {
         return pessoasPorIdade;
     }
 
-    public void ordenarPorAltura(double altura) {
-
+    public List<Pessoa> ordenarPorAltura() {
+        List<Pessoa> pessoaPorAltura = new ArrayList<>(listPessoas);
+        Collections.sort(pessoaPorAltura, new ComparatorPorAltura());
+        return pessoaPorAltura;
     }
+
 
     public static void main(String[] args) {
         OrdenacaoPessoas op = new OrdenacaoPessoas();
-        op.adicionarPessoa("Filipe", 21, 1.79);
+        op.adicionarPessoa("Filipe", 21, 2.00);
         op.adicionarPessoa("Gabriela", 22, 1.79);
-        op.adicionarPessoa("Daniel", 10, 1.79);
-        op.adicionarPessoa("Karla",43, 1.79);
+        op.adicionarPessoa("Daniel", 10, 1.50);
+        op.adicionarPessoa("Karla",43, 1.65);
 
-        System.out.println(op.ordenarPorIdade());
+        System.out.println(op.ordenarPorAltura());
     }
 }
